@@ -1,0 +1,27 @@
+CREATE DATABASE posts;
+CREATE TABLE post(id SERIAL, usuario VARCHAR(25), fecha_de_creacion DATE, contenido VARCHAR, descripcion VARCHAR, PRIMARY KEY (id));
+INSERT INTO post (usuario, fecha_de_creacion, contenido, descripcion) VALUES ('Pamela', '20-07-20', 'Pamela ha sido creada', 'Creacion Pamela');
+INSERT INTO post (usuario, fecha_de_creacion, contenido, descripcion) VALUES ('Pamela', '19-07-20', 'Pamela ha sido creada', 'Creacion Pamela 2');
+INSERT INTO post (usuario, fecha_de_creacion, contenido, descripcion) VALUES ('Carlos', '20-07-20', 'Carlos ha sido creado', 'Creacion Carlos');
+ALTER TABLE post ADD titulo VARCHAR(25);
+UPDATE post SET titulo = 'PAM' WHERE id = 1;
+UPDATE post SET titulo = 'PAM' WHERE id = 2;
+UPDATE post SET titulo = 'CAR' WHERE id = 3;
+INSERT INTO post (usuario, fecha_de_creacion, contenido, descripcion, titulo) VALUES ('Pedro', '20-07-20', 'Pedro ha sido creado', 'Creacion Pedro', 'PED');
+INSERT INTO post (usuario, fecha_de_creacion, contenido, descripcion, titulo) VALUES ('Pedro', '19-07-20', 'Pedro ha sido creado', 'Creacion Pedro 2', 'PED');
+DELETE FROM post WHERE id = 3;
+INSERT INTO post (usuario, fecha_de_creacion, contenido, descripcion, titulo) VALUES ('Carlos', '22-07-20', 'Carlos ha sido creado', 'Creacion Carlos', 'CAR');
+CREATE TABLE comentarios(id SERIAL, fecha_hora_creacion TIMESTAMP, contenido VARCHAR, id_post INT, PRIMARY KEY (id), FOREIGN KEY (id_post) REFERENCES post(id));
+INSERT INTO comentarios (fecha_hora_creacion, contenido, id_post) VALUES ('20-07-20 14:00:00', 'Pamela ha sido creada', 1);
+INSERT INTO comentarios (fecha_hora_creacion, contenido, id_post) VALUES ('19-07-20 17:45:20', 'Pamela ha sido creada', 1);
+INSERT INTO comentarios (fecha_hora_creacion, contenido, id_post) VALUES ('22-07-20 13:30:00', 'Carlos ha sido creado', 6);
+INSERT INTO comentarios (fecha_hora_creacion, contenido, id_post) VALUES ('21-07-20 10:34:12', 'Carlos ha sido creado', 6);
+INSERT INTO comentarios (fecha_hora_creacion, contenido, id_post) VALUES ('20-07-20 12:12:12', 'Carlos ha sido creado', 6);
+INSERT INTO comentarios (fecha_hora_creacion, contenido, id_post) VALUES ('20-07-20 15:59:50', 'Carlos ha sido creado', 6);
+INSERT INTO post (usuario, fecha_de_creacion, contenido, descripcion, titulo) VALUES ('Margarita', '22-07-20', 'Margarita ha sido creada', 'Creacion Margarita', 'MAR');
+INSERT INTO comentarios (fecha_hora_creacion, contenido, id_post) VALUES ('22-07-20 16:01:02', 'Margarita ha sido creada', 7);
+INSERT INTO comentarios (fecha_hora_creacion, contenido, id_post) VALUES ('21-07-20 11:11:10', 'Margarita ha sido creada', 7);
+INSERT INTO comentarios (fecha_hora_creacion, contenido, id_post) VALUES ('21-07-20 09:23:12', 'Margarita ha sido creada', 7);
+INSERT INTO comentarios (fecha_hora_creacion, contenido, id_post) VALUES ('19-07-20 22:10:22', 'Margarita ha sido creada', 7);
+INSERT INTO comentarios (fecha_hora_creacion, contenido, id_post) VALUES ('15-07-20 19:54:45', 'Margarita ha sido creada', 7);
+
